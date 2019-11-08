@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+    <html>
+    <head>
+        <meta charset="UTF-8">
+        <title>豆瓣top250电影分析</title>
+        
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Microsoft/vscode/extensions/markdown-language-features/media/markdown.css">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Microsoft/vscode/extensions/markdown-language-features/media/highlight.css">
+        
+        <style>
+.task-list-item { list-style-type: none; } .task-list-item-checkbox { margin-left: -20px; vertical-align: middle; }
+</style>
+        <style>
+            body {
+                font-family: -apple-system, BlinkMacSystemFont, 'Segoe WPC', 'Segoe UI', 'Ubuntu', 'Droid Sans', sans-serif;
+                font-size: 14px;
+                line-height: 1.6;
+            }
+        </style>
+        
+        
+    </head>
+    <body class="vscode-light">
+        <h1 id="%e8%b1%86%e7%93%a3top250%e7%94%b5%e5%bd%b1%e5%88%86%e6%9e%90">豆瓣top250电影分析</h1>
+<h2 id="%e7%ae%80%e4%bb%8b">简介</h2>
+<h4 id="%e6%95%b0%e6%8d%ae%e6%ba%90">数据源：</h4>
+<p>采用网络爬虫抓取豆瓣top250电影排行榜</p>
+<h4 id="%e5%88%86%e6%9e%90%e5%b7%a5%e5%85%b7">分析工具：</h4>
+<p>R语言，excel</p>
+<h4 id="%e5%88%86%e6%9e%90%e6%80%9d%e8%b7%af">分析思路：</h4>
+<p>极值，分组统计，词频统计，相关性猜测，词云</p>
+<h2 id="%e6%8c%89%e5%88%86%e6%95%b0%e5%88%86%e6%9e%90">按分数分析</h2>
+<p>首先我们250部电影按照分数分类，可以获取豆瓣电影分数分布图：
+<p></p><img src="file:///e:\3data\python\分析文档\asset\%E8%B1%86%E7%93%A3%E7%94%B5%E5%BD%B1%E8%AF%84%E5%88%86%E5%88%86%E5%B8%83.jpg" alt="豆瓣电影评分分布"></p>
+由上图我们可以发现，分数分布满足两头少，中间多的橄榄型分布。
+电影评分分布在【8.5-9】分较多</p>
+<h4 id="%e6%9e%81%e5%80%bc%e9%83%a8%e5%88%86">极值部分</h4>
+<p>评分最高电影：肖申克的救赎（9.7）
+评分最低电影：驴得水、秒速五厘米（8.3）</p>
+<h4 id="%e4%bc%97%e6%95%b0%e9%83%a8%e5%88%86">众数部分</h4>
+<p>电影评分最多的分数是8.8分，一共有46部电影获取了这个评分，占榜单电影总数的18.4%</p>
+<h4 id="%e6%8e%a2%e7%b4%a2%e9%83%a8%e5%88%86">探索部分</h4>
+<h5 id="%e8%af%a5%e5%88%86%e6%95%b0%e6%ae%b5%e8%af%84%e4%bb%b7%e4%ba%ba%e6%95%b0%e6%9c%80%e5%a4%a7%e5%80%bc%e5%92%8c%e5%88%86%e6%ae%b5%e6%95%a3%e7%82%b9%e5%9b%be"><em>该分数段评价人数最大值和分段散点图</em></h5>
+<p><img src="file:///e:\3data\python\分析文档\asset\%E8%AF%84%E5%88%86%E5%92%8C%E8%AF%84%E4%BB%B7%E4%BA%BA%E6%95%B0%E6%95%A3%E7%82%B9%E5%9B%BE.JPG" alt="人数最多和分数"></p>
+<h5 id="%e8%af%a5%e5%88%86%e6%95%b0%e6%ae%b5%e8%af%84%e4%bb%b7%e6%80%bb%e6%95%b0%e5%92%8c%e5%88%86%e5%80%bc%e4%b9%8b%e9%97%b4%e7%9a%84%e5%85%b3%e7%b3%bb"><em>该分数段评价总数和分值之间的关系</em></h5>
+<p><img src="file:///e:\3data\python\分析文档\asset\%E8%AF%A5%E5%88%86%E6%AE%B5%E8%AF%84%E4%BB%B7%E4%BA%BA%E6%95%B0%E6%80%BB%E5%92%8C%E6%95%A3%E7%82%B9%E5%9B%BE.JPG" alt="人数最多和分数"></p>
+<h2 id="%e6%8c%89%e5%b9%b4%e4%bb%bd%e5%88%86%e6%9e%90">按年份分析</h2>
+<p><img src="file:///e:\3data\python\分析文档\asset\1.png" alt="豆瓣电影年份分布"></p>
+<h5 id="%e6%9e%81%e5%80%bc%e9%83%a8%e5%88%86-1">极值部分</h5>
+<ol>
+<li>其中年纪最老的top250：1931年的《城市之光》，评分9.3，电影大师卓别林主演</li>
+<li>最新的top250电影：《何以为家》、《头号玩家》、《我不是药神》</li>
+</ol>
+<h5 id="%e4%bc%97%e6%95%b0%e9%83%a8%e5%88%86-1">众数部分</h5>
+<p>上榜最多的年份：2010，2004，分别有14部电影进入top250</p>
+<h5 id="%e6%8e%a2%e7%b4%a2%e9%83%a8%e5%88%86-1">探索部分</h5>
+<ol>
+<li>上榜数目第二的是1994年，这一年有11部电影进入top250</li>
+<li>再次是1997年以9部电影进入榜单：这一年也被称为中国电影的曾经以为是开始没想到已是巅峰的时刻。
+自此以后中国电影进入榜单电影的评分少有突破1997年和1997年以前的作品，这其中也有时间滤镜的供销。</li>
+</ol>
+<h2 id="%e8%af%8d%e4%ba%91">词云</h2>
+<p>利用爬取的数据：地区、年份、和电影类型制，利用worldcloud制作词云如下：</p>
+<div ></p><img src="file:///e:\3data\python\分析文档\asset\Rplot.png" alt="",align="center"></p></div>
+<h2 id="%e5%ae%8c%e6%95%b4%e6%a6%9c%e5%8d%95%e5%91%88%e7%8e%b0">完整榜单呈现</h2>
+<p>按年份对豆瓣top250电影进行排序：
+<img src="file:///e:\3data\python\分析文档\asset\1.gif" alt="榜单">
+<img src="file:///e:\3data\python\分析文档\asset\2.jpg" alt="榜单">
+<img src="file:///e:\3data\python\分析文档\asset\3.jpg" alt="榜单"></p>
+
+    </body>
+    </html>
